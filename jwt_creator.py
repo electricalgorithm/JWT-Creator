@@ -27,7 +27,7 @@ def create_jwt(project_id: str, private_key_file: str, algorithm: str, minutes: 
         "aud": project_id,
     }
     # Read the private key file.
-    with open(private_key_file, "r", "t") as file:
+    with open(private_key_file, "rt") as file:
         private_key = file.read()
 
     return [jwt.encode(token, private_key, algorithm=algorithm), iat, exp]
@@ -70,5 +70,5 @@ if __name__ == "__main__":
 
     # Save the token into a file if wanted.
     if args.save is not None:
-        with open(args.save[0], "w", "t") as save_file:
+        with open(args.save[0], "wt") as save_file:
             save_file.write(jwt_token)
