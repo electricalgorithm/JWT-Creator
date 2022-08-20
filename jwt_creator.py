@@ -57,7 +57,10 @@ def init_argument_parser() -> dict:
 
 if __name__ == "__main__":
     args = init_argument_parser()
-    jwt_token, start_time, end_time = create_jwt(args.project_id[0], args.private_key[0], args.algorithm[0], minutes=(int(args.minutes[0]) or 20))
+    jwt_token, start_time, end_time = create_jwt(args.project_id[0],
+                                                args.private_key[0],
+                                                args.algorithm[0],
+                                                minutes=(int(args.minutes[0]) or 20))
     print(f'\n\tJWT_Creator.py\n\
             Starting Time: {start_time}\n\
             Ending Time: {end_time}')
@@ -67,6 +70,5 @@ if __name__ == "__main__":
 
     # Save the token into a file if wanted.
     if args.save is not None:
-        save_file = open(args.save[0], "w", "t")
-        save_file.write(jwt_token)
-        save_file.close
+        with open(args.save[0], "w", "t") as save_file:
+            save_file.write(jwt_token)
