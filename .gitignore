@@ -3,3 +3,4 @@ lib/
 bin/
 pip
 pyvenv.cfg
+file.txt
