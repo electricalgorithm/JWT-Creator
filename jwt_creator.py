@@ -1,5 +1,6 @@
 """This script creates you a JWT for using IoT Projects of your Google Cloud."""
 import argparse
+from ast import arg
 import datetime
 import jwt
 
@@ -27,7 +28,7 @@ def create_jwt(project_id: str, private_key_file: str, algorithm: str, minutes: 
         "aud": project_id,
     }
     # Read the private key file.
-    with open(private_key_file, "rt") as file:
+    with open(private_key_file, "rt", encoding="utf-8") as file:
         private_key = file.read()
 
     return [jwt.encode(token, private_key, algorithm=algorithm), iat, exp]
@@ -60,7 +61,7 @@ if __name__ == "__main__":
     jwt_token, start_time, end_time = create_jwt(args.project_id[0],
                                                 args.private_key[0],
                                                 args.algorithm[0],
-                                                minutes=(int(args.minutes[0]) or 20))
+                                                minutes=(20 if args.minutes is None else args.minutes[0]))
     print(f'\n\tJWT_Creator.py\n\
             Starting Time: {start_time}\n\
             Ending Time: {end_time}')
@@ -70,5 +71,5 @@ if __name__ == "__main__":
 
     # Save the token into a file if wanted.
     if args.save is not None:
-        with open(args.save[0], "wt") as save_file:
+        with open(args.save[0], "wt", encoding="utf-8") as save_file:
             save_file.write(jwt_token)
