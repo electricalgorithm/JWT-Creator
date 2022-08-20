@@ -62,7 +62,7 @@ if __name__ == "__main__":
         args.private_key[0],
         args.algorithm[0],
         minutes=(20 if args.minutes is None else args.minutes[0]))
-    
+
     print(f'\n\tJWT_Creator.py\n\
             Starting Time: {start_time}\n\
             Ending Time: {end_time}')
