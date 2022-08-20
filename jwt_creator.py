@@ -61,7 +61,7 @@ if __name__ == "__main__":
         args.project_id[0],
         args.private_key[0],
         args.algorithm[0],
-        minutes=(20 if args.minutes is None else args.minutes[0]))
+        minutes=(20 if args.minutes is None else int(args.minutes[0])))
 
     print(f'\n\tJWT_Creator.py\n\
             Starting Time: {start_time}\n\
