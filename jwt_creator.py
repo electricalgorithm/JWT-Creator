@@ -1,6 +1,5 @@
 """This script creates you a JWT for using IoT Projects of your Google Cloud."""
 import argparse
-from ast import arg
 import datetime
 import jwt
 
@@ -58,10 +57,12 @@ def init_argument_parser() -> dict:
 
 if __name__ == "__main__":
     args = init_argument_parser()
-    jwt_token, start_time, end_time = create_jwt(args.project_id[0],
-                                                args.private_key[0],
-                                                args.algorithm[0],
-                                                minutes=(20 if args.minutes is None else args.minutes[0]))
+    jwt_token, start_time, end_time = create_jwt(
+        args.project_id[0],
+        args.private_key[0],
+        args.algorithm[0],
+        minutes=(20 if args.minutes is None else args.minutes[0]))
+    
     print(f'\n\tJWT_Creator.py\n\
             Starting Time: {start_time}\n\
             Ending Time: {end_time}')
