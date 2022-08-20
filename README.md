@@ -11,7 +11,7 @@
 # Install dependencies.
 (JWT-Creator) ~$ pip install -r requirements.txt
 # Run the program.
-(JWT-Creator) ~$ python JWT_Creator.py -i [project_name] -p [private_key_location] -a [algorithm_name] -t [minutes_to_live]
+(JWT-Creator) ~$ python jwt_creator.py -i [project_name] -p [private_key_location] -a [algorithm_name] -t [minutes_to_live]
 ```
 
 ## Help
